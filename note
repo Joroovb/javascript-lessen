@@ -1,0 +1,85 @@
+const dice = [5, 5, 5, 6, 2] // 15
+
+function chance(dice) {
+  let sum = 0;
+  for (let i = 0; i < dice.length; i++) {
+    sum = sum + dice[i]
+  }
+  return sum
+}
+
+function count(dice, num) {
+  // maken een som variabele
+  let sum = 0;
+  // loop door het array
+  for (let i = 0; i < dice.length; i++) {
+    // We zijn op zoek naar 1'en
+    // is de huidige dobeelsteen gelijk aan 1?
+    if (dice[i] === num) {
+      // tel een op bij sum
+      sum = sum + num
+    }
+  }
+  return sum
+}
+
+function IsNoOfAKind(dice, count) {
+  let freq = [0, 0, 0, 0, 0, 0];
+  
+  // loop door het array
+  for (let i = 0; i < dice.length; i++) {
+    // Freq tabel maken
+    freq[dice[i] - 1]++
+  }
+
+  // loop door freq tabel
+  for (let i = 0; i < freq.length; i++) {
+    // is freq[i] gelijk aan count?
+    if (freq[i] === count) {
+      return true
+    }
+  }
+  return false
+}
+
+function Yahtzee(dice) {
+  if (IsNoOfAKind(dice, 5)) {
+    return 50;
+  } 
+  return 0;
+}
+
+function ThreeOfAKind(dice) {
+  if (IsNoOfAKind(dice, 3)) {
+    return chance(dice)
+  }
+  return 0
+}
+
+function FourOfAKind(dice) {
+  if (IsNoOfAKind(dice, 4)) {
+    return chance(dice)
+  }
+  return 0
+}
+
+// stel: We hebben een html div met id "chance-vak"
+const vak = document.getElementById("chance-vak")
+vak.addEventListener('click', function(e) {
+  this.innerHTML = chance(dice)
+})
+
+const ones = document.getElementById("ones")
+ones.addEventListener('click', function(e) {
+  this.innerHTML = count(dice, 1)
+})
+
+const twos = document.getElementById("twos")
+twos.addEventListener('click', function(e) {
+  this.innerHTML = count(dice, 2)
+})
+
+const tok = document.getElementById("tok")
+tok.addEventListener('click', function(e) {
+  this.innerHTML = ThreeOfAKind(dice)
+})
