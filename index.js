@@ -1,11 +1,19 @@
 // variabele maken waar 5 getallen in zitten. 
 let dice = [1, 5, 1, 2, 3];
 
+//opdracht volgende keer:
+//1-functie die dice array met random getallen (tussen 1 en 6) vult
+//2-Als ik op de 'klik mij' button klik, dan moet het array worden gevuld met random waarden
+
 let onesScore = document.getElementById("ones");
 onesScore.addEventListener("click", function() {
   this.innerText = calculateScoreForNumber(1);
 })
 
+let changeScore = document.getElementById("change");
+changeScore.addEventListener("click", function() {
+  this.innerText = calculateScoreForChange();
+})
 
 // maak het skelet van een functie die sum heet
 function sum() {
@@ -52,3 +60,11 @@ function calculateScoreForNumber(num) {
   return countNumber(num) * num;
 }
 
+function calculateScoreForChange(){
+  let result = 0;
+  for (let index = 0; index < dice.length; index++ ) {
+    result = result + dice[index];
+  }
+
+  return result;  
+}
