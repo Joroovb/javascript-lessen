@@ -1,10 +1,6 @@
 // variabele maken waar 5 getallen in zitten. 
 let dice = [1, 5, 1, 2, 3];
 
-//opdracht volgende keer:
-//1-functie die dice array met random getallen (tussen 1 en 6) vult
-//2-Als ik op de 'klik mij' button klik, dan moet het array worden gevuld met random waarden
-
 let onesScore = document.getElementById("ones");
 onesScore.addEventListener("click", function() {
   this.innerText = calculateScoreForNumber(1);
@@ -15,33 +11,6 @@ changeScore.addEventListener("click", function() {
   this.innerText = calculateScoreForChange();
 })
 
-// maak het skelet van een functie die sum heet
-function sum() {
-  // let result = dice[0] + dice[1] + dice[2] + dice[3] + dice[4];
-  let result = 0;
-  // 1. index variabele aanmaken
-  // 2. Evaluatie: Gaan we nog door met loopen of niet?
-  // 3. increment: Ophogen van index variabele
-  for (let index = 0; index < dice.length; index++ ) {
-      // console.log(index)
-      // console.log(dice[index]);
-      result = result + dice[index]
-  }
-  console.log(result);
-  return result;
-}
-
-// stel 5, 5, 1, 2, 3 -> countNumber(5)
-// verwachte uitkomst? 2
-// Uitkomst: 1
-
-// stel 5, 4, 1, 2, 3 -> countNumber(5)
-// verwachte uitkomst? 1
-// Uitkomst: 1
-
-// stel 1, 5, 1, 2, 3 -> countNumber(4)
-// verwachte uitkomst? 0
-// Uitkomst: 
 
 function countNumber(num) {
   let result = 0;
@@ -68,3 +37,20 @@ function calculateScoreForChange(){
 
   return result;  
 }
+
+/* Mogelijk volgende stappen:
+
+- functie die dice array met random getallen (tussen 1 en 6) vult
+- Als ik op de 'gooien' button klik, dan moet het array worden gevuld met random waarden
+- Zorg dat de waarden in het dice array op het scherm getoond worden (dat zijn dan de ogen op de dobbelstenen)
+- Maak fucnties om score te berekenen (en dus soms om te bepalen of datgene gegooid is):
+  - 1 t/m 6
+  - 4 of a kind
+  - yathzee
+  - full house
+  - kleine straat
+  - grote straat
+- laat bij elke worp alle scores zien op het scherm
+- maak het mogelijk om na een 'worp' bepaalde dobbelstenen 'vast te zetten' (Dit mag ook  hardcoded, dus een datasteructuur waarin staat wat wordt vastegehouden en waar dus rekening mee wordt gehouden bij het gooien)
+
+*/
